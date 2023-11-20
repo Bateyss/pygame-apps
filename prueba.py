@@ -83,6 +83,7 @@ class DatosPanel:
         panel_width = rectt.width
         for cuadro in sq_display:
                 cuadrill: Cuadrito = cuadro
+                cuadritoTitle = FUENTE_20.render("Cuadro "+str(cuadrill.nombre), True, BLACK)
                 VxTitle = FUENTE_20.render("Vx:", True, BLACK)
                 VxTitleRect = VxTitle.get_rect()
                 velocidad_x = round(cuadrill.sq_speed_x,2)
@@ -91,6 +92,8 @@ class DatosPanel:
                 VyTitleRect = VyTitle.get_rect()
                 velocidad_y = round(cuadrill.sq_speed_y,2)
                 VyTxt = FUENTE_20.render(str(velocidad_y) + "m/s", True, BLACK)
+                SCREEN.blit(cuadritoTitle,(self.pos_x,panel_height))
+                panel_height += cuadritoTitle.get_rect().height + 2
                 SCREEN.blit(VxTitle,(self.pos_x,panel_height))
                 SCREEN.blit(VxTxt,(self.pos_x + VxTitleRect.width + 2,panel_height))
                 if panel_width < VxTitleRect.width + VxTxt.get_width() + 2:
